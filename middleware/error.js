@@ -1,15 +1,16 @@
 
-
+import * as colors from "colors";
 // report error to the console and send appropriate response to the client
-const errorHandler = (err, req, res, next) => {
-    // log to console for dev
-    console.log(err.stack.red);
-
-    res.status(err.statusCode || 500).json({
+const ErrorHandler = (err, req, res, next) => {
+    console.log("Middleware Error Hadnling");
+    const errStatus = err.statusCode || 500;
+    const errMsg = err.message || 'Something went wrong';
+    res.status(errStatus).json({
         success: false,
-        error: err.message || "Server Error",
-    });
-    next();
+        status: errStatus,
+        message: errMsg,
+        stack: process.env.NODE_ENV === 'development' ? err.stack : {}
+    })
 }
 
-export default errorHandler;
+export default ErrorHandler
