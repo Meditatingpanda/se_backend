@@ -18,6 +18,12 @@ const userSchema = new Schema({
         required: true,
         trim: true
     },
+    posts_created: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Post"
+        },
+    ],
     followers: [
         {
             userId: {
