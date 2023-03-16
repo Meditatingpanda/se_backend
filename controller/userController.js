@@ -1,13 +1,16 @@
 import expressAsyncHandler from "express-async-handler";
+import User from "../models/Users.js";
 
 const userController = {
-    getUser: expressAsyncHandler((req, res) => {
-        res.send('User Profile');
+    getUser: expressAsyncHandler(async(req, res) => {
+        const user = req.user;
+        res.json({ user });
     }),
-    followUser: expressAsyncHandler((req, res) => {
-        res.send('Follow User');
+    followUser: expressAsyncHandler(async(req, res) => {
+       
+       
     }),
-    unfollowUser: expressAsyncHandler((req, res) => {
+    unfollowUser: expressAsyncHandler(async(req, res) => {
         res.send('Unfollow User');
     })
 

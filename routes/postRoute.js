@@ -24,10 +24,8 @@ router.post('/unlike/:id', postController.unlikePost);
 //     - Input: Comment
 //     - Return: Comment-ID
 
-router.post('/comment/:id', (req, res) => {
+router.post('/comment/:id', postController.commentPost);
 
-}
-)
 
 //GET api/posts/{id} would return a single post with {id} populated with its number of likes and comments
 router.get('/posts/:id', postController.getSinglePost);

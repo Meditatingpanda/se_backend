@@ -23,9 +23,9 @@ app.use(cors());
 app.use(express.json());
 
 // routes
-app.use('/api',authRouter);
-app.use('/api',protect, postRouter);
-app.use('/api',protect ,userRouter);
+app.use('/api/', authRouter);
+app.use('/api/', protect, postRouter);
+app.use('/api/', protect, userRouter);
 
 app.use(errorHandler);
 app.listen(port, (err) => {
