@@ -5,11 +5,11 @@ import User from "../models/Users.js";
 
 const protect = expressAsyncHandler(async (req, res, next) => {
     const auth = req.headers.authorization;
-   console.log(auth)
+   //console.log(auth)
     if (auth && auth.startsWith("Bearer")) {
         const token = auth.split(" ")[1];
         const decoded = jwt.verify(token, config.JWT_SECRET);
-        console.log(decoded)
+       // console.log(decoded)
        
         // if token expired, decoded will be an error
        

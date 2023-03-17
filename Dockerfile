@@ -10,4 +10,6 @@ RUN yarn install
 COPY . .
 
 EXPOSE 3000
-CMD [ "yarn", "start" ]
+CMD [ "yarn", "start","test" ]
+# test the routes with yarn test
+
