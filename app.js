@@ -10,6 +10,7 @@ import errorHandler from './middleware/error.js';
 import protect from './middleware/validateToken.js';
 import helmet from 'helmet';
 import userRoute from './routes/userRoute.js';
+import ticketRoute from './routes/ticketRoute.js';
 
 const port = process.env.PORT || 4000;
 const app = express();
@@ -26,6 +27,7 @@ app.use(express.json());
 // routes
 app.use('/api/', authRouter);
 app.use('/api',trainRouter);
+app.use('/api',ticketRoute)
 app.use('/api',protect,userRoute);
 
 // catch 404 and forward to error handler
