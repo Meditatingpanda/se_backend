@@ -3,14 +3,15 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import morgan from 'morgan';
 import authRouter from './routes/authRoute.js';
-import postRouter from './routes/postRoute.js';
-import userRouter from './routes/userRoute.js';
+import trainRouter from './routes/trainRoute.js';
 import * as colors from 'colors';
 import connectMongoDB from './db/connectMongoDB.js';
 import errorHandler from './middleware/error.js';
 import protect from './middleware/validateToken.js';
 import helmet from 'helmet';
-const port = process.env.PORT || 3000;
+import userRoute from './routes/userRoute.js';
+
+const port = process.env.PORT || 4000;
 const app = express();
 
 // middleware
@@ -24,8 +25,9 @@ app.use(express.json());
 
 // routes
 app.use('/api/', authRouter);
-app.use('/api/', protect, postRouter);
-app.use('/api/', protect, userRouter);
+app.use('/api',trainRouter);
+app.use('/api',protect,userRoute);
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   const err = new Error('Not Found');
