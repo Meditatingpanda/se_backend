@@ -37,6 +37,13 @@ const authController = {
             res.status(400);
             throw new Error("Please provide an email and password");
         }
+        const isExist = await User.findOne({ email });
+        if (isExist) {
+            res.status(400).json({
+                message: "User already exist"
+            });
+            return
+        }
 
         const user = await User.create({
             name,
